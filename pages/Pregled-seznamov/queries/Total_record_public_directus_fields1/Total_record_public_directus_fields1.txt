@@ -1,0 +1,1 @@
+SELECT COUNT(*) from public.directus_fields where field ilike '%{{Table_datasets.searchText}}%';

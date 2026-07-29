@@ -1,0 +1,3 @@
+SELECT id, dataset_id, author_id, is_primary, sort_order
+FROM metadata.dataset_author
+order by is_primary

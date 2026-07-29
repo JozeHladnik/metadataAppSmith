@@ -1,0 +1,16 @@
+-- Step 1: Delete old links
+DELETE FROM metadata.dataset_formats
+WHERE dataset_id = {{ JSONForm1.formData.id || Tabela_sklopov.triggeredRow.id || Table1.selectedRow.id }};
+
+-- Step 2: Insert current selection (with order)
+INSERT INTO metadata.dataset_formats (dataset_id, format_id, sort_order)
+SELECT
+  CAST({{ JSONForm1.formData.id || Tabela_sklopov.triggeredRow.id || Table1.selectedRow.id }} AS INTEGER),
+  CAST(value AS INTEGER),
+  ordinality
+FROM jsonb_array_elements_text(
+  COALESCE(
+    NULLIF({{ JSON.stringify(JSONForm1.formData.formats || JSONForm1.formData.format || JSONForm1.formData.formatIds || JSONForm1.formData.file_formats || []) }}, ''),
+    '[]'
+  )::jsonb
+) WITH ORDINALITY AS t(value, ordinality);

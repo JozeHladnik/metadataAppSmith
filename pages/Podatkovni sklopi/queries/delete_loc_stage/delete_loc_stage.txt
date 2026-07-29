@@ -1,0 +1,2 @@
+DELETE FROM metadata.dataset_locations_stage 
+WHERE id = {{ Location_Stage.triggeredRow.id }};

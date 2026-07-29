@@ -1,0 +1,7 @@
+SELECT 
+    id AS value, 
+		CONCAT_WS(' - ', label, description) AS label,
+    label AS label_o ,
+		description as desc
+FROM metadata.locations 
+ORDER BY label ASC;

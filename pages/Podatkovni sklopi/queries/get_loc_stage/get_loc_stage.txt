@@ -1,0 +1,18 @@
+SELECT 
+    dls.id, 
+    l.label AS Location, 
+    stg.label AS Stage
+FROM metadata.dataset_locations_stage dls
+JOIN metadata.locations l ON dls.location_id = l.id
+LEFT JOIN metadata.stages stg ON dls.stage_id = stg.id
+WHERE dls.dataset_id = {{ Tabela_sklopov.triggeredRow.id }};
+
+--SELECT 
+--    ls.id AS value,                    -- id of the mapping row itself (locations_stages.id)
+--    CONCAT(l.label, ' [', s.label, ']') AS label,
+--    l.id AS loc_id,
+--    s.id AS stage_id,
+--    l.security_level
+--FROM metadata.dataset_locations_stage ls
+--JOIN metadata.locations l ON l.id = ls.location_id
+--JOIN metadata.stages s ON s.id = ls.stage_id 

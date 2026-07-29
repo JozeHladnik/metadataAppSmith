@@ -1,0 +1,1 @@
+SELECT * FROM metadata."authors" LIMIT 10;

@@ -1,0 +1,12 @@
+INSERT INTO metadata.file_formats 
+  ("extension", "label", label_en, mime_type, sort_order, active)
+VALUES 
+  (
+		{{File_f.newRow.extension}},
+		{{File_f.newRow.label}},
+		{{File_f.newRow.label_en}},
+		{{File_f.newRow.mime_type}},
+		{{File_f.newRow.sort_order}},
+		TRUE -- This will now always force the new row to be active
+   
+  );

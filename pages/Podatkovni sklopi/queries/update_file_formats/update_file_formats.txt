@@ -1,0 +1,18 @@
+-- Step 1: Delete old file format links for this dataset
+DELETE FROM metadata.dataset_file_formats
+WHERE dataset_id = {{ Tabela_sklopov.triggeredRow.id }};
+
+-- Step 2: Insert newly selected file format IDs (preserving order)
+INSERT INTO metadata.dataset_file_formats (dataset_id, file_format_id, sort_order)
+SELECT 
+  CAST({{ JSONForm1.formData.id || Table1.selectedRow.id }} AS INTEGER) AS dataset_id,
+  CAST(file_format_id AS INTEGER) AS file_format_id,
+  ordinality AS sort_order
+FROM jsonb_array_elements_text(
+  -- Fallback to empty JSON array if null/empty string
+  CASE 
+    WHEN {{ JSON.stringify(JSONForm1.formData.fileFormats || JSONForm1.formData.file_formats || []) }} = '' 
+      THEN '[]'::jsonb
+    ELSE {{ JSON.stringify(JSONForm1.formData.fileFormats || JSONForm1.formData.file_formats || []) }}::jsonb
+  END
+) WITH ORDINALITY AS t(file_format_id, ordinality);

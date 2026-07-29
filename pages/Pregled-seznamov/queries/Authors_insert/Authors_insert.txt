@@ -1,0 +1,14 @@
+INSERT INTO metadata.authors 
+  (description, sort_order, email, hr_ref, active, ime, priimek, phone, mobile)
+VALUES 
+  (
+    {{Authors.newRow.description}}, 
+    {{Authors.newRow.sort_order}}, 
+    {{Authors.newRow.email}}, 
+    {{Authors.newRow.hr_ref}}, 
+    TRUE, -- This will now always force the new row to be active
+    {{Authors.newRow.ime}}, 
+    {{Authors.newRow.priimek}}, 
+    {{Authors.newRow.phone}}, 
+    {{Authors.newRow.mobile}}
+  );

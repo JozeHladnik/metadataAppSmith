@@ -1,0 +1,12 @@
+SELECT
+  *
+FROM
+  metadata.authors
+WHERE
+  "label" ilike '%{{Authors.searchText}}%'
+ORDER BY
+  "{{Authors.sortOrder.column || 'id'}}" {{Authors.sortOrder.order !== "desc" ? "" : "DESC"}}
+LIMIT
+  {{Authors.pageSize}}
+OFFSET
+  {{Authors.pageOffset}}

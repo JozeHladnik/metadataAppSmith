@@ -1,0 +1,49 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 211,
+  "dynamicBindingPathList": [
+    {
+      "key": "text"
+    },
+    {
+      "key": "fontFamily"
+    }
+  ],
+  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicTriggerPathList": [],
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "1rem",
+  "fontStyle": "BOLD",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "0cbau5hsvi",
+  "leftColumn": 35,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 218,
+  "mobileLeftColumn": 0,
+  "mobileRightColumn": 8,
+  "mobileTopRow": 214,
+  "needsErrorInfo": false,
+  "originalBottomRow": 211,
+  "originalTopRow": 207,
+  "overflow": "NONE",
+  "parentColumnSpace": 18.1875,
+  "parentId": "hmrzpawkdh",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 43,
+  "shouldTruncate": false,
+  "text": "{{\n  Object.keys(JSONForm1.formData).filter(key => \n    !_.isEqual(JSONForm1.formData[key], JSONForm1.sourceData[key])\n  ).join(\", \")\n}}",
+  "textAlign": "LEFT",
+  "textColor": "#231F20",
+  "topRow": 207,
+  "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "type": "TEXT_WIDGET",
+  "version": 1,
+  "widgetId": "t2emszk5mg",
+  "widgetName": "Text19"
+}

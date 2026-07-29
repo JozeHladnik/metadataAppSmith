@@ -1,0 +1,5 @@
+SELECT 
+    id AS value, 
+    label AS label 
+FROM metadata.formats
+ORDER BY label ASC;

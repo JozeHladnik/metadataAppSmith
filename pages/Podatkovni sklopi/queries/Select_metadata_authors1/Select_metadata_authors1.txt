@@ -1,0 +1,6 @@
+SELECT
+  *
+FROM
+  metadata.authors
+WHERE
+  "label" ilike '%{{filter_author.filterText}}%'

@@ -1,0 +1,20 @@
+-- Step 1: Delete old authors
+DELETE FROM metadata.dataset_author
+WHERE dataset_id = {{ Tabela_sklopov.triggeredRow.id }};
+
+-- Step 2: Insert updated authors
+INSERT INTO metadata.dataset_author (id, dataset_id, author_id, is_primary, sort_order)
+SELECT 
+    nextval('metadata.dataset_author_id_seq'::regclass),
+    {{ Tabela_sklopov.triggeredRow.id }},
+    al.author_id,
+    (al.author_id = {{ JSONForm1.formData.primary_author || 'NULL' }}),
+    al.sort_order
+FROM (
+    SELECT 
+        value::integer AS author_id,
+        ordinality - 1 AS sort_order
+    FROM json_array_elements_text(
+        '{{ JSON.stringify(JSONForm1.formData.authors || []) }}'::json
+    ) WITH ORDINALITY
+) al;

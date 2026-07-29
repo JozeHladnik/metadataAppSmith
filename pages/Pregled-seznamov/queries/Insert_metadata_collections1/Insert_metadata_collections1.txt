@@ -1,0 +1,1 @@
+INSERT INTO metadata.collections ("code","label","label_en","description","parent_id","sort_order","active") VALUES ('{{(Table1.newRow || {}).code}}','{{(Table1.newRow || {}).label}}','{{(Table1.newRow || {}).label_en}}','{{(Table1.newRow || {}).description}}','{{(Table1.newRow || {}).parent_id}}','{{(Table1.newRow || {}).sort_order}}','{{(Table1.newRow || {}).active}}')

@@ -1,0 +1,20 @@
+{
+  "gitSyncId": "6a573e3c01c8a6d55f5d1671_8624fb08-0666-44d9-b3cc-26eebc33a31d",
+  "id": "Podatkovni sklopi_JSObject2",
+  "unpublishedCollection": {
+    "name": "JSObject2",
+    "pageId": "Podatkovni sklopi",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "variables": [
+      {
+        "name": "myVar1",
+        "value": "[]"
+      },
+      {
+        "name": "myVar2",
+        "value": "{}"
+      }
+    ]
+  }
+}

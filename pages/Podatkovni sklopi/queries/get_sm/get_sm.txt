@@ -1,0 +1,6 @@
+SELECT 
+    id AS value, 
+    code AS label,
+	  label AS label_sl
+FROM metadata.sm 
+ORDER BY label ASC;

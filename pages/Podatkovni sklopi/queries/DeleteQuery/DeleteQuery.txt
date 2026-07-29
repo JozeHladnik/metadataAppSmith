@@ -1,0 +1,2 @@
+DELETE FROM research."departments"
+  WHERE "id" = {{data_table.triggeredRow.id}};

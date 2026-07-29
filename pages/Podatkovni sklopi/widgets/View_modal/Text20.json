@@ -1,0 +1,55 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 243,
+  "dynamicBindingPathList": [
+    {
+      "key": "truncateButtonColor"
+    },
+    {
+      "key": "fontFamily"
+    },
+    {
+      "key": "borderRadius"
+    },
+    {
+      "key": "text"
+    }
+  ],
+  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicTriggerPathList": [],
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "1rem",
+  "fontStyle": "BOLD",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "xbhf0bs586",
+  "leftColumn": 39,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 219,
+  "mobileLeftColumn": 39,
+  "mobileRightColumn": 55,
+  "mobileTopRow": 215,
+  "needsErrorInfo": false,
+  "originalBottomRow": 219,
+  "originalTopRow": 215,
+  "overflow": "NONE",
+  "parentColumnSpace": 15.26171875,
+  "parentId": "hmrzpawkdh",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 55,
+  "shouldTruncate": false,
+  "text": "// Text1\nCollections default: {{ JSON.stringify(sourceData?.collections) }}\n\n// Text2\nFile formats default: {{ JSON.stringify(sourceData?.file_formats) }}\n\n// Text3\nCollections options sample: {{ JSON.stringify(get_collections?.data?.slice(0,3)) }}",
+  "textAlign": "LEFT",
+  "textColor": "#231F20",
+  "topRow": 215,
+  "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "type": "TEXT_WIDGET",
+  "version": 1,
+  "widgetId": "sjtjwtdos0",
+  "widgetName": "Text20"
+}

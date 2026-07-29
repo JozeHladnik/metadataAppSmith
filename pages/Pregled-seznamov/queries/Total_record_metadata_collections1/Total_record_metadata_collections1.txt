@@ -1,0 +1,1 @@
+SELECT COUNT(*) from metadata.collections where label ilike '%{{Table1.searchText}}%';

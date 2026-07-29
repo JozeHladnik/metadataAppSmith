@@ -1,0 +1,49 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 34,
+  "dynamicBindingPathList": [
+    {
+      "key": "text"
+    },
+    {
+      "key": "fontFamily"
+    }
+  ],
+  "dynamicHeight": "AUTO_HEIGHT",
+  "dynamicTriggerPathList": [],
+  "fontFamily": "{{appsmith.theme.fontFamily.appFont}}",
+  "fontSize": "1rem",
+  "fontStyle": "BOLD",
+  "isLoading": false,
+  "isVisible": true,
+  "key": "f6db3x637g",
+  "leftColumn": 41,
+  "maxDynamicHeight": 9000,
+  "minDynamicHeight": 4,
+  "minWidth": 450,
+  "mobileBottomRow": 11,
+  "mobileLeftColumn": 32,
+  "mobileRightColumn": 48,
+  "mobileTopRow": 7,
+  "needsErrorInfo": false,
+  "originalBottomRow": 28,
+  "originalTopRow": 8,
+  "overflow": "NONE",
+  "parentColumnSpace": 22.24609375,
+  "parentId": "59rw5mx0bq",
+  "parentRowSpace": 10,
+  "renderMode": "CANVAS",
+  "responsiveBehavior": "fill",
+  "rightColumn": 57,
+  "shouldTruncate": false,
+  "text": "{{ \n  (function() {\n    // 1. Grab the raw data from the triggered row\n   let rawData = Tabela_sklopov.selectedRow?.authors_data;\n    \n    if (!rawData) return \"ERROR: authors_data is empty or undefined.\";\n\n    // 2. If PostgreSQL sent it as a string, parse it\n    if (typeof rawData === 'string') {\n      try {\n        rawData = JSON.parse(rawData);\n      } catch (e) {\n        return \"ERROR: Could not parse authors_data JSON.\";\n      }\n    }\n\n    if (!Array.isArray(rawData)) return \"ERROR: authors_data is not an array. It is: \" + typeof rawData;\n\n    // 3. Try to find the primary author\n    // Checking for true, 'true', 't', or 1 just in case Postgres formatted it weirdly\n    const primary = rawData.find(a => \n      a.is_primary === true || \n      a.is_primary === 'true' || \n      a.is_primary === 't' || \n      a.is_primary === 1\n    );\n    \n    // 4. Output the result\n    if (primary) {\n      return \"SUCCESS: Primary Author is \" + primary.name + \" (ID: \" + primary.id + \")\";\n    } else {\n      // If it fails, print the raw data so we can see EXACTLY what 'is_primary' looks like\n      return \"NO PRIMARY FOUND. Here is the raw data: \" + JSON.stringify(rawData);\n    }\n  })() \n}}",
+  "textAlign": "LEFT",
+  "textColor": "#231F20",
+  "topRow": 8,
+  "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "type": "TEXT_WIDGET",
+  "version": 1,
+  "widgetId": "aet4lq680r",
+  "widgetName": "Text18"
+}

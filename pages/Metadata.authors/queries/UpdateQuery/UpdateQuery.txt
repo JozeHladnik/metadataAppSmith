@@ -1,0 +1,13 @@
+UPDATE metadata."authors" SET
+		"code" = '{{update_form.fieldState.code.isVisible ? update_form.formData.code : update_form.sourceData.code}}',
+		"description" = '{{update_form.fieldState.description.isVisible ? update_form.formData.description : update_form.sourceData.description}}',
+    "sort_order" = '{{update_form.fieldState.sort_order.isVisible ? update_form.formData.sort_order : update_form.sourceData.sort_order}}',
+		"email" = '{{update_form.fieldState.email.isVisible ? update_form.formData.email : update_form.sourceData.email}}',
+		"hr_ref" = '{{update_form.fieldState.hr_ref.isVisible ? update_form.formData.hr_ref : update_form.sourceData.hr_ref}}',
+		"active" = '{{update_form.fieldState.active.isVisible ? update_form.formData.active : update_form.sourceData.active}}',
+		"ime" = '{{update_form.fieldState.ime.isVisible ? update_form.formData.ime : update_form.sourceData.ime}}',
+		"priimek" = '{{update_form.fieldState.priimek.isVisible ? update_form.formData.priimek : update_form.sourceData.priimek}}',
+		"phone" = '{{update_form.fieldState.phone.isVisible ? update_form.formData.phone : update_form.sourceData.phone}}',
+		"mobile" = '{{update_form.fieldState.mobile.isVisible ? update_form.formData.mobile : update_form.sourceData.mobile}}',
+		"label" = '{{update_form.fieldState.label.isVisible ? update_form.formData.label : update_form.sourceData.label}}'
+	WHERE "id" = {{data_table.selectedRow.id}};

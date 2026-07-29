@@ -1,0 +1,14 @@
+UPDATE metadata.datasets
+SET 
+  title = {{JSONForm1.formData.title || null}},
+  description = {{JSONForm1.formData.description || null}},
+  data_capture = {{JSONForm1.formData.data_capture || null}},
+  data_size = {{ JSONForm1.formData.data_size || null }},
+  no_measurements = {{ JSONForm1.formData.no_measurements || null }},
+  status_id = {{ JSONForm1.formData.status_id || null }},
+  time_frame = {{JSONForm1.formData.time_frame || null}},
+  spatial_frame = {{JSONForm1.formData.spatial_frame || null}},
+  "external" = {{JSONForm1.formData.external || null}},
+  updated_at = NOW(),
+	updated_by='AppSchmid'
+WHERE id = {{Tabela_sklopov.triggeredRow.id}}

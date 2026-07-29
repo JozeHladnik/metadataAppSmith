@@ -1,0 +1,11 @@
+SELECT * FROM metadata.vw_datasets_overview
+WHERE 
+  (
+    {{ !filter_sm.selectedOptionValues || filter_sm.selectedOptionValues.length === 0 }} 
+    OR sm ILIKE ANY( {{ filter_sm.selectedOptionValues.map(val => '%' + val + '%') }} )
+  )
+  AND 
+  (
+    {{ !filter_author.selectedOptionValues || filter_author.selectedOptionValues.length === 0 }} 
+    OR authors ILIKE ANY( {{ filter_author.selectedOptionValues.map(val => '%' + val + '%') }} )
+  );

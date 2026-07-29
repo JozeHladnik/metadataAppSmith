@@ -1,0 +1,1 @@
+UPDATE metadata.file_formats SET "extension"= '{{File_f.updatedRow.extension}}', "label"= '{{File_f.updatedRow.label}}', "label_en"= '{{File_f.updatedRow.label_en}}', "mime_type"= '{{File_f.updatedRow.mime_type}}', "sort_order"= '{{File_f.updatedRow.sort_order}}', "active"= '{{File_f.updatedRow.active}}' WHERE "id"= {{File_f.updatedRow.id}};

@@ -1,0 +1,4 @@
+SELECT id, label 
+FROM metadata.locations 
+WHERE active = true 
+ORDER BY sort_order;

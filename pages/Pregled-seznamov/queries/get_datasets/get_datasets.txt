@@ -1,0 +1,3 @@
+SELECT * 
+FROM metadata.vw_datasets_overview 
+ORDER BY updated_at DESC;

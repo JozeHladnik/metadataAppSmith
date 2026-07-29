@@ -1,0 +1,6 @@
+INSERT INTO metadata.dataset_locations_stage (dataset_id, location_id, stage_id)
+VALUES (
+    {{ Tabela_sklopov.triggeredRow.id }},
+    {{ Select_Location.selectedOptionValue }},
+    {{ Select_Stage.selectedOptionValue }}
+);

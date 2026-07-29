@@ -1,0 +1,20 @@
+-- Step 1: Delete old instrument links
+DELETE FROM metadata.dataset_instrument
+WHERE dataset_id = {{ JSONForm1.formData.id || Tabela_sklopov.triggeredRow.id || Table1.selectedRow.id }};
+
+-- Step 2: Insert current selection (with order)
+INSERT INTO metadata.dataset_instrument (dataset_id, instrument_id,  sort_order)
+SELECT
+  CAST({{ JSONForm1.formData.id || Tabela_sklopov.triggeredRow.id || Table1.selectedRow.id }} AS INTEGER),
+  CAST(value AS INTEGER),
+--  NULL AS note,  -- default empty note (change if you have per-instrument notes)
+  ordinality
+FROM jsonb_array_elements_text(
+  COALESCE(
+    NULLIF({{ JSON.stringify(
+      JSONForm1.formData.instruments || 
+      []
+    ) }}, ''),
+    '[]'
+  )::jsonb
+) WITH ORDINALITY AS t(value, ordinality);

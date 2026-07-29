@@ -1,0 +1,4 @@
+INSERT INTO research."departments" (
+	"naziv")
+VALUES (
+	'{{insert_form.formData.naziv}}');

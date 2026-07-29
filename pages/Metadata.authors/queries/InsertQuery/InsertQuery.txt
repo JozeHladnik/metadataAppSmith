@@ -1,0 +1,26 @@
+INSERT INTO metadata."authors" (
+	"code",
+	"description",
+	"sort_order",
+	"email",
+	"hr_ref",
+	"active",
+	"ime",
+	"priimek",
+	"phone",
+	"mobile",
+	"label"
+)
+VALUES (
+	'{{insert_form.formData.code}}',
+	'{{insert_form.formData.description}}',
+	'{{insert_form.formData.sort_order}}',
+	'{{insert_form.formData.email}}',
+	'{{insert_form.formData.hr_ref}}',
+	'{{insert_form.formData.active}}',
+	'{{insert_form.formData.ime}}',
+	'{{insert_form.formData.priimek}}',
+	'{{insert_form.formData.phone}}',
+	'{{insert_form.formData.mobile}}',
+	'{{insert_form.formData.label}}'
+);

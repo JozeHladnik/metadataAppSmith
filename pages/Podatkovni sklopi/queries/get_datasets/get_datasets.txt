@@ -1,0 +1,1 @@
+SELECT * FROM metadata."vw_datasets_overview" 

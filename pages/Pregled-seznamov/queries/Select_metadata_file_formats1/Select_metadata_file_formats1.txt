@@ -1,0 +1,12 @@
+SELECT
+  *
+FROM
+  metadata.file_formats
+WHERE
+  "label" ilike '%{{File_f.searchText}}%'
+ORDER BY
+  "{{File_f.sortOrder.column || 'id'}}" {{File_f.sortOrder.order !== "desc" ? "" : "DESC"}}
+LIMIT
+  {{File_f.pageSize}}
+OFFSET
+  {{File_f.pageOffset}}

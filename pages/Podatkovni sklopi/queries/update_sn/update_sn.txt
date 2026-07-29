@@ -1,0 +1,19 @@
+-- Step 1: Delete old sn links
+DELETE FROM metadata.dataset_sn
+WHERE dataset_id = {{ JSONForm1.formData.id || Tabela_sklopov.triggeredRow.id || Table1.selectedRow.id }};
+
+-- Step 2: Insert current selection (with order)
+INSERT INTO metadata.dataset_sn (dataset_id, sn_id, sort_order)
+SELECT
+  CAST({{ JSONForm1.formData.id || Tabela_sklopov.triggeredRow.id || Table1.selectedRow.id }} AS INTEGER),
+  CAST(value AS INTEGER),
+  ordinality
+FROM jsonb_array_elements_text(
+  COALESCE(
+    NULLIF({{ JSON.stringify(
+      JSONForm1.formData.sn || 
+      []
+    ) }}, ''),
+    '[]'
+  )::jsonb
+) WITH ORDINALITY AS t(value, ordinality);

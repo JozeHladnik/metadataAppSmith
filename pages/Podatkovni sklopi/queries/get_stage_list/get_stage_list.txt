@@ -1,0 +1,3 @@
+SELECT id, label 
+FROM metadata.stages 
+ORDER BY sort_order;
