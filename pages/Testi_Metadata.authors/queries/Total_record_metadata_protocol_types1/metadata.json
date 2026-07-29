@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6a573e3c01c8a6d55f5d1671_fd8516fe-3d9c-4f9a-8225-9a665e9ef9c4",
-  "id": "Metadata.authors_Select_metadata_protocol_types1",
+  "gitSyncId": "6a573e3c01c8a6d55f5d1671_7554989d-f77e-4475-806a-9975c2d39990",
+  "id": "Testi_Metadata.authors_Total_record_metadata_protocol_types1",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT\n  *\nFROM\n  metadata.protocol_types\nORDER BY\n  \"{{Table1.sortOrder.column || 'id'}}\" {{Table1.sortOrder.order !== \"desc\" ? \"\" : \"DESC\"}}\nLIMIT\n  {{Table1.pageSize}}\nOFFSET\n  {{Table1.pageOffset}}",
+      "body": "SELECT COUNT(*) from metadata.protocol_types;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,8 +27,8 @@
         "key": "body"
       }
     ],
-    "name": "Select_metadata_protocol_types1",
-    "pageId": "Metadata.authors",
+    "name": "Total_record_metadata_protocol_types1",
+    "pageId": "Testi_Metadata.authors",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }

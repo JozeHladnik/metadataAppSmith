@@ -1,6 +1,6 @@
 {
   "gitSyncId": "6a573e3c01c8a6d55f5d1671_64312fe3-4038-47ab-8dac-c94b4682713c",
-  "id": "Metadata.authors_Insert_metadata_authors1",
+  "id": "Testi_Metadata.authors_Insert_metadata_authors1",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -28,7 +28,7 @@
       }
     ],
     "name": "Insert_metadata_authors1",
-    "pageId": "Metadata.authors",
+    "pageId": "Testi_Metadata.authors",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }

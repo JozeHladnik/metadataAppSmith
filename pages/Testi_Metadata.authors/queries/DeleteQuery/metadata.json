@@ -1,6 +1,6 @@
 {
   "gitSyncId": "6a573e3c01c8a6d55f5d1671_43f86474-c0be-4373-855b-761393b1633b",
-  "id": "Metadata.authors_DeleteQuery",
+  "id": "Testi_Metadata.authors_DeleteQuery",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -28,7 +28,7 @@
       }
     ],
     "name": "DeleteQuery",
-    "pageId": "Metadata.authors",
+    "pageId": "Testi_Metadata.authors",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }

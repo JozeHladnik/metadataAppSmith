@@ -68,7 +68,7 @@ export default {
             closeModal('View_modal'); // Updated to match modal name in sidebar
 
             // Refresh the main table query (Replace 'get_datasets' with your fetch Query name)
-            await get_datasets.run(); 
+            await GetView.run(); 
 
         } catch (error) {
             showAlert('Failed to save dataset: ' + (error.message || error), 'error');

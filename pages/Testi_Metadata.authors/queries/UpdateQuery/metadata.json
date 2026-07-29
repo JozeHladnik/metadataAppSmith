@@ -1,6 +1,6 @@
 {
   "gitSyncId": "6a573e3c01c8a6d55f5d1671_bff1900f-85cf-42b2-a715-6f8848c6608d",
-  "id": "Metadata.authors_UpdateQuery",
+  "id": "Testi_Metadata.authors_UpdateQuery",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -28,7 +28,7 @@
       }
     ],
     "name": "UpdateQuery",
-    "pageId": "Metadata.authors",
+    "pageId": "Testi_Metadata.authors",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }

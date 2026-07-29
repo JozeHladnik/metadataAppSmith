@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6a573e3c01c8a6d55f5d1671_5b0ef636-3b01-420b-bdaa-fd545a7f2c01",
-  "id": "Metadata.authors_SelectQuery",
+  "gitSyncId": "6a573e3c01c8a6d55f5d1671_6feeccf2-7a8e-483e-9448-5a8f6275db75",
+  "id": "Testi_Metadata.authors_Total_record_metadata_authors1",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM metadata.\"authors\"\nWHERE \"code\" ilike '%{{data_table.searchText || \"\"}}%'\nORDER BY \"{{data_table.sortOrder.column || 'id'}}\" {{data_table.sortOrder.order || 'ASC'}}\nLIMIT {{data_table.pageSize}}\nOFFSET {{(data_table.pageNo - 1) * data_table.pageSize}};",
+      "body": "SELECT COUNT(*) from metadata.authors where label ilike '%{{Table2.searchText}}%';",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,9 +27,9 @@
         "key": "body"
       }
     ],
-    "name": "SelectQuery",
-    "pageId": "Metadata.authors",
+    "name": "Total_record_metadata_authors1",
+    "pageId": "Testi_Metadata.authors",
     "runBehaviour": "AUTOMATIC",
-    "userSetOnLoad": true
+    "userSetOnLoad": false
   }
 }

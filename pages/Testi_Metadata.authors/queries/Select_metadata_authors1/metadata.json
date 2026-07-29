@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6a573e3c01c8a6d55f5d1671_6feeccf2-7a8e-483e-9448-5a8f6275db75",
-  "id": "Metadata.authors_Total_record_metadata_authors1",
+  "gitSyncId": "6a573e3c01c8a6d55f5d1671_2da9ba27-f2a0-4f61-8734-dbfd7fe21f81",
+  "id": "Testi_Metadata.authors_Select_metadata_authors1",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT COUNT(*) from metadata.authors where label ilike '%{{Table2.searchText}}%';",
+      "body": "SELECT\n  *\nFROM\n  metadata.authors\nWHERE\n  \"label\" ilike '%{{Table2.searchText}}%'\nORDER BY\n  \"{{Table2.sortOrder.column || 'id'}}\" {{Table2.sortOrder.order !== \"desc\" ? \"\" : \"DESC\"}}\nLIMIT\n  {{Table2.pageSize}}\nOFFSET\n  {{Table2.pageOffset}}",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,8 +27,8 @@
         "key": "body"
       }
     ],
-    "name": "Total_record_metadata_authors1",
-    "pageId": "Metadata.authors",
+    "name": "Select_metadata_authors1",
+    "pageId": "Testi_Metadata.authors",
     "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false
   }

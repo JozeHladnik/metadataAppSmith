@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6a573e3c01c8a6d55f5d1671_061f65a1-8e2e-4426-957a-c20c1aec0917",
-  "id": "Metadata.authors_Update_metadata_protocol_types1",
+  "gitSyncId": "6a573e3c01c8a6d55f5d1671_04528cbc-a5b1-4e74-9b38-32ef14e84505",
+  "id": "Testi_Metadata.authors_Insert_metadata_protocol_types1",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "UPDATE metadata.protocol_types SET \"code\"= '{{Table1.updatedRow.code}}', \"label\"= '{{Table1.updatedRow.label}}', \"label_en\"= '{{Table1.updatedRow.label_en}}', \"description\"= '{{Table1.updatedRow.description}}', \"external_ref\"= '{{Table1.updatedRow.external_ref}}', \"sort_order\"= '{{Table1.updatedRow.sort_order}}', \"active\"= '{{Table1.updatedRow.active}}' WHERE \"id\"= {{Table1.updatedRow.id}};",
+      "body": "INSERT INTO metadata.protocol_types (\"code\",\"label\",\"label_en\",\"description\",\"external_ref\",\"sort_order\",\"active\") VALUES ('{{(Table1.newRow || {}).code}}','{{(Table1.newRow || {}).label}}','{{(Table1.newRow || {}).label_en}}','{{(Table1.newRow || {}).description}}','{{(Table1.newRow || {}).external_ref}}','{{(Table1.newRow || {}).sort_order}}','{{(Table1.newRow || {}).active}}')",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -27,8 +27,8 @@
         "key": "body"
       }
     ],
-    "name": "Update_metadata_protocol_types1",
-    "pageId": "Metadata.authors",
+    "name": "Insert_metadata_protocol_types1",
+    "pageId": "Testi_Metadata.authors",
     "runBehaviour": "MANUAL",
     "userSetOnLoad": false
   }

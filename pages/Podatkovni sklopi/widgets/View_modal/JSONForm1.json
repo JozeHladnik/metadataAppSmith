@@ -406,9 +406,16 @@
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "onSubmit"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onSubmit"
+    }
+  ],
   "fieldLimitExceeded": false,
   "fixedFooter": true,
   "flexVerticalAlignment": "start",
@@ -424,6 +431,7 @@
   "mobileRightColumn": 24,
   "mobileTopRow": 4,
   "needsErrorInfo": false,
+  "onSubmit": "{{SaveDatasetHandler.saveAll() }}",
   "originalBottomRow": 200,
   "originalTopRow": 5,
   "parentColumnSpace": 6.9375,
@@ -1122,9 +1130,9 @@
     }
   },
   "scrollContents": true,
-  "showReset": true,
+  "showReset": false,
   "sourceData": "{{ appsmith.store.viewData }}",
-  "submitButtonLabel": "Submit",
+  "submitButtonLabel": "Save",
   "submitButtonStyles": {
     "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
     "boxShadow": "none",
