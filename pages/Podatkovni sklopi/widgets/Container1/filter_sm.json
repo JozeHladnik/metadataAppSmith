@@ -54,7 +54,7 @@
   "placeholderText": "Select option(s)",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 28,
+  "rightColumn": 26,
   "serverSideFiltering": false,
   "sourceData": "{{Sm.data}}",
   "topRow": 12,

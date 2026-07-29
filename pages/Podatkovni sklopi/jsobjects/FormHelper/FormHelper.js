@@ -4,8 +4,15 @@ export default {
     
     if (!row || Object.keys(row).length === 0) return;
     
-    const getIds = (dataArray) => Array.isArray(dataArray) ? dataArray.map(item => item.id) : [];
-
+    //const getIds = (dataArray) => Array.isArray(dataArray) ? dataArray.map(item => item.id) : [];
+		const getIds = (dataArray) => {
+			if (!Array.isArray(dataArray)) return [];
+			return dataArray
+				.map(item => item?.id ?? item?.value ?? item)
+				.filter(id => id !== null && id !== undefined && id !== '')
+				.map(id => Number(id));   // force number – change to String(id) if your options use strings
+		};
+		
     // NEW: Find the author where is_primary is true
     const primaryAuthor = row.authors_data && Array.isArray(row.authors_data) 
       ? row.authors_data.find(a => a.is_primary === true) 
@@ -33,8 +40,8 @@ export default {
       authors: getIds(row.authors_data),
             // NEW: Add the primary author ID to the form data
       primary_author: primaryAuthor ? primaryAuthor.id : null, 
-			//collections: getIds(row.collections_data),    // <--- ADDED	2
-      collections: getIds(row.collections_data || row.collection_data || row.collections),
+			collections: getIds(row.collections_data),    // <--- ADDED	2
+      //collections: getIds(row.collections_data || row.collection_data || row.collections),
 			file_formats: getIds(row.file_formats_data),
 			data_formats: getIds(row.data_formats_data),  // <--- ADDED	4
       instruments: getIds(row.instruments_data),

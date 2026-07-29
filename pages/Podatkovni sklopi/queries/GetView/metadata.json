@@ -29,7 +29,7 @@
     ],
     "name": "GetView",
     "pageId": "Podatkovni sklopi",
-    "runBehaviour": "MANUAL",
+    "runBehaviour": "AUTOMATIC",
     "userSetOnLoad": false
   }
 }

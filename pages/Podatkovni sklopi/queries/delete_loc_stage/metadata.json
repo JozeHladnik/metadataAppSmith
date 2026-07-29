@@ -1,5 +1,5 @@
 {
-  "gitSyncId": "6a573e3c01c8a6d55f5d1671_efe58d19-5226-4b8a-82aa-1c3eac7b04f1",
+  "gitSyncId": "6a573e3c01c8a6d55f5d1671_5cd99717-12a5-4904-aa05-b07a225257cc",
   "id": "Podatkovni sklopi_delete_loc_stage",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
@@ -29,7 +29,7 @@
     ],
     "name": "delete_loc_stage",
     "pageId": "Podatkovni sklopi",
-    "runBehaviour": "ON_PAGE_LOAD",
-    "userSetOnLoad": true
+    "runBehaviour": "MANUAL",
+    "userSetOnLoad": false
   }
 }
