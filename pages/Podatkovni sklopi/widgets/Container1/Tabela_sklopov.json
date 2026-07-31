@@ -88,7 +88,7 @@
     "collections": 399,
     "customColumn1": 60,
     "id": 60,
-    "title": 195
+    "title": 375
   },
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -99,9 +99,6 @@
   ],
   "delimiter": ",",
   "dynamicBindingPathList": [
-    {
-      "key": "tableData"
-    },
     {
       "key": "primaryColumns.id.computedValue"
     },
@@ -263,6 +260,9 @@
     },
     {
       "key": "primaryColumns.partners_data.computedValue"
+    },
+    {
+      "key": "tableData"
     }
   ],
   "dynamicPropertyPathList": [
@@ -299,8 +299,8 @@
   "mobileRightColumn": 37,
   "mobileTopRow": 21,
   "needsErrorInfo": false,
-  "originalBottomRow": 87,
-  "originalTopRow": 28,
+  "originalBottomRow": 78,
+  "originalTopRow": 19,
   "parentColumnSpace": 14.3505859375,
   "parentId": "59rw5mx0bq",
   "parentRowSpace": 10,
@@ -1982,7 +1982,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 61,
   "searchKey": "",
-  "tableData": "{{GetView.data}}",
+  "tableData": "{{ GetView.data}}",
   "textSize": "0.875rem",
   "topRow": 19,
   "totalRecordsCount": 0,

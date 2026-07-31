@@ -66,5 +66,29 @@ export default {
 		console.log("collections_data raw:", row.collections_data);
     console.log("collections ids:", getIds(row.collections_data));
     console.log("file_formats ids:", getIds(row.file_formats_data));
+  },
+// Dodano preverjanje!!!
+	hasUnsavedChanges: () => {
+    const clean = (obj) => {
+      const out = {};
+      for (const key in obj) {
+        if (key === 'locations_stages') continue;
+        let val = obj[key];
+        if (Array.isArray(val)) {
+          val = val.map(v => String(v)).sort();
+        } else if (val === null || val === undefined) {
+          val = '';
+        } else {
+          val = String(val).trim();
+        }
+        out[key] = val;
+      }
+      return out;
+    };
+
+    const a = clean(JSONForm1.formData);
+    const b = clean(JSONForm1.sourceData);
+
+    return !_.isEqual(a, b);
   }
 }

@@ -4,10 +4,7 @@
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "bottomRow": 19,
   "boxShadow": "none",
-  "defaultOptionValue": [
-    "GREEN",
-    "RED"
-  ],
+  "defaultOptionValue": "",
   "dynamicBindingPathList": [
     {
       "key": "sourceData"
@@ -23,9 +20,16 @@
   "dynamicPropertyPathList": [
     {
       "key": "sourceData"
+    },
+    {
+      "key": "onOptionChange"
     }
   ],
-  "dynamicTriggerPathList": [],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onOptionChange"
+    }
+  ],
   "isDisabled": false,
   "isFilterable": true,
   "isLoading": false,
@@ -46,8 +50,11 @@
   "mobileRightColumn": 22,
   "mobileTopRow": 21,
   "needsErrorInfo": false,
+  "onOptionChange": "{{ GetView.run(); }}",
   "optionLabel": "code",
   "optionValue": "label",
+  "originalBottomRow": 19,
+  "originalTopRow": 12,
   "parentColumnSpace": 12.2177734375,
   "parentId": "59rw5mx0bq",
   "parentRowSpace": 10,
@@ -56,7 +63,7 @@
   "responsiveBehavior": "fill",
   "rightColumn": 26,
   "serverSideFiltering": false,
-  "sourceData": "{{Sm.data}}",
+  "sourceData": "{{get_sm.data}}",
   "topRow": 12,
   "type": "MULTI_SELECT_WIDGET_V2",
   "version": 1,

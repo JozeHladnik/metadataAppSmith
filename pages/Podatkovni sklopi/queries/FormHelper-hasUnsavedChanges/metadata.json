@@ -1,6 +1,6 @@
 {
-  "gitSyncId": "6a573e3c01c8a6d55f5d1671_a285a0f8-cc25-4840-bac6-829ac54b9f36",
-  "id": "Podatkovni sklopi_FormHelper.openViewModal",
+  "gitSyncId": "6a573e3c01c8a6d55f5d1671_95b96bbb-24ad-444f-88e7-6719d51d68b8",
+  "id": "Podatkovni sklopi_FormHelper.hasUnsavedChanges",
   "pluginId": "js-plugin",
   "pluginType": "JS",
   "unpublishedAction": {
@@ -22,10 +22,10 @@
         "key": "body"
       }
     ],
-    "fullyQualifiedName": "FormHelper.openViewModal",
-    "name": "openViewModal",
+    "fullyQualifiedName": "FormHelper.hasUnsavedChanges",
+    "name": "hasUnsavedChanges",
     "pageId": "Podatkovni sklopi",
-    "runBehaviour": "ON_PAGE_LOAD",
-    "userSetOnLoad": true
+    "runBehaviour": "MANUAL",
+    "userSetOnLoad": false
   }
 }

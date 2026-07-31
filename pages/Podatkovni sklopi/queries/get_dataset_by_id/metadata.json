@@ -1,11 +1,11 @@
 {
-  "gitSyncId": "6a573e3c01c8a6d55f5d1671_7d692ffb-1ce5-4453-b74a-867b36b16e75",
-  "id": "Podatkovni sklopi_get_sm",
+  "gitSyncId": "6a573e3c01c8a6d55f5d1671_2c33c09e-61fa-481d-a71a-ae0dc0b42b53",
+  "id": "Podatkovni sklopi_get_dataset_by_id",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n    --label AS value,\n\t\t--label AS label,\n\t\tid AS value, \n    code AS label,\n\t  label AS label_sl\nFROM metadata.sm \nORDER BY label ASC;",
+      "body": "SELECT * FROM metadata.datasets\nWHERE id = {{ appsmith.store.editId }};",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
@@ -22,10 +22,14 @@
       "name": "PostgreSQL_metadata",
       "pluginId": "postgres-plugin"
     },
-    "dynamicBindingPathList": [],
-    "name": "get_sm",
+    "dynamicBindingPathList": [
+      {
+        "key": "body"
+      }
+    ],
+    "name": "get_dataset_by_id",
     "pageId": "Podatkovni sklopi",
-    "runBehaviour": "ON_PAGE_LOAD",
-    "userSetOnLoad": true
+    "runBehaviour": "MANUAL",
+    "userSetOnLoad": false
   }
 }

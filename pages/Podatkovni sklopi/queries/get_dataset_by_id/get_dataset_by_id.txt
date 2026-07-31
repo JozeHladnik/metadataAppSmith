@@ -1,0 +1,2 @@
+SELECT * FROM metadata.datasets
+WHERE id = {{ appsmith.store.editId }};

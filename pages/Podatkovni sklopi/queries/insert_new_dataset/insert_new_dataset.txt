@@ -1,0 +1,26 @@
+INSERT INTO metadata.datasets
+(legacy_ref, title, 
+ description, data_capture, 
+ data_size, no_measurements,
+ status_id, time_frame, 
+ spatial_frame, "external", 
+ created_at, updated_at, 
+ created_by, updated_by)
+VALUES
+(
+  '',
+  'Nov niz',
+  'Podatki od ...'::text,
+  'Opiši način zajema podatkov.'::text,
+  'MB/GB/TB'::text,
+  'Number of measurements.'::text,
+  1,
+  '',
+  'On the ZAG.'::text,
+  'Partnerji'::text,
+  now(),
+  now(),
+  'AppShmit',
+  ''
+)
+RETURNING id;
