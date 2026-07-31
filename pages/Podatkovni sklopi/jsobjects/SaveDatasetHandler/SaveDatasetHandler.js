@@ -1,25 +1,20 @@
 export default {
-    // Helper to normalize values so _.isEqual compares cleanly
-    cleanValue: (val) => {
-        if (val === null || val === undefined) return '';
-        if (Array.isArray(val)) {
-            // Sort and convert all elements to strings to ignore ordering/type mismatches
-            return val.map(item => String(item)).sort();
-        }
-        return String(val).trim();
-    },
-
     saveAll: async () => {
         try {
-            const formData = JSONForm1.formData || {};
-            const sourceData = JSONForm1.sourceData || {};
+            const excludeFields = ['locations_stages', 'legacy_ref', 'created_at'];
+            const original = _.omit(appsmith.store.viewData, excludeFields);
+            const current = _.omit(JSONForm1.formData, excludeFields);
 
-            // Helper function comparing normalized values
-            const hasChanged = (field) => {
-                const current = this.cleanValue(formData[field]);
-                const original = this.cleanValue(sourceData[field]);
-                return !_.isEqual(current, original);
-            };
+            // Fallback: if a field is missing from formData, treat it as unchanged (use original value)
+            const fieldsNotInForm = ['external', 'status_code'];
+            fieldsNotInForm.forEach(key => {
+                if (current[key] === undefined) {
+                    current[key] = original[key];
+                }
+            });
+
+            // Same hasChanged helper, but based on the store/form diff
+            const hasChanged = (field) => !_.isEqual(original[field], current[field]);
 
             const tasks = [];
 
@@ -65,10 +60,10 @@ export default {
                 showAlert('No changes detected.', 'info');
             }
 
-            closeModal('View_modal'); // Updated to match modal name in sidebar
+            closeModal('View_modal');
 
-            // Refresh the main table query (Replace 'get_datasets' with your fetch Query name)
-            await GetView.run(); 
+            // Refresh the main table query
+            await GetView.run();
 
         } catch (error) {
             showAlert('Failed to save dataset: ' + (error.message || error), 'error');

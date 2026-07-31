@@ -5,7 +5,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 202,
+  "bottomRow": 209,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "childStylesheet": {
     "ARRAY": {
@@ -432,7 +432,7 @@
   "mobileTopRow": 4,
   "needsErrorInfo": false,
   "onSubmit": "{{SaveDatasetHandler.saveAll() }}",
-  "originalBottomRow": 202,
+  "originalBottomRow": 209,
   "originalTopRow": 7,
   "parentColumnSpace": 6.9375,
   "parentId": "hmrzpawkdh",
@@ -629,7 +629,7 @@
           "isDisabled": false,
           "isRequired": false,
           "isSpellCheck": false,
-          "isVisible": false,
+          "isVisible": true,
           "label": "External",
           "labelTextSize": "0.875rem",
           "originalIdentifier": "external",
