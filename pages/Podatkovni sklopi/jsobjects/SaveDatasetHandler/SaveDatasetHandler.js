@@ -1,72 +1,88 @@
 export default {
-    saveAll: async () => {
-        try {
-            const excludeFields = ['locations_stages', 'legacy_ref', 'created_at'];
-            const original = _.omit(appsmith.store.viewData, excludeFields);
-            const current = _.omit(JSONForm1.formData, excludeFields);
+  cleanValue: (val) => {
+    if (val === null || val === undefined) return '';
+    if (Array.isArray(val)) return val.map(String).sort();
+    return String(val).trim();
+  },
 
-            // Fallback: if a field is missing from formData, treat it as unchanged (use original value)
-            const fieldsNotInForm = ['external', 'status_code'];
-            fieldsNotInForm.forEach(key => {
-                if (current[key] === undefined) {
-                    current[key] = original[key];
-                }
-            });
+  saveAll: async () => {
+    try {
+      const excludeFields = ['locations_stages', 'legacy_ref', 'created_at'];
+      const original = _.omit(appsmith.store.viewData || {}, excludeFields);
+      const current = _.omit(JSONForm1.formData || {}, excludeFields);
 
-            // Same hasChanged helper, but based on the store/form diff
-            const hasChanged = (field) => !_.isEqual(original[field], current[field]);
+      // Polja, ki jih forma včasih ne vrne
+      ['external', 'status_code'].forEach((key) => {
+        if (current[key] === undefined) current[key] = original[key];
+      });
 
-            const tasks = [];
+      // primary_author: vedno naj bo nastavljen in med authors
+      const authors = current.authors ?? original.authors ?? [];
+      const authorIds = (authors || []).map((a) => String(a?.value ?? a));
 
-            // 1. Main dataset fields
-            const mainFields = [
-                'title',
-                'description',
-                'data_capture',
-                'data_size',
-                'no_measurements',
-                'status_id',
-                'time_frame',
-                'spatial_frame',
-                'external'
-            ];
+      let primary = current.primary_author ?? original.primary_author;
+      if (primary === undefined || primary === null || primary === '') {
+        primary = authorIds.length ? authorIds[0] : null;
+        current.primary_author = primary != null ? Number(primary) : null;
+      }
 
-            if (mainFields.some(field => hasChanged(field))) {
-                tasks.push(update_dataset.run());
-            }
+      if (primary === undefined || primary === null || primary === '') {
+        showAlert('Primary author is required. Select at least one author.', 'error');
+        return;
+      }
+      if (!authorIds.includes(String(primary))) {
+        showAlert('Primary author must be one of the selected authors.', 'error');
+        return;
+      }
+      // poskrbi, da je v current (za update_authors)
+      current.primary_author = Number(primary);
 
-            // 2. Junction table fields
-            if (hasChanged('authors') || hasChanged('primary_author')) {
-                tasks.push(update_authors.run());
-            }
-            if (hasChanged('collections')) tasks.push(update_collections.run());
-            if (hasChanged('file_formats')) tasks.push(update_file_formats.run());
-            if (hasChanged('data_formats')) tasks.push(update_formats.run());
-            if (hasChanged('instruments')) tasks.push(update_instruments.run());
-            if (hasChanged('partners')) tasks.push(update_partners.run());
-            if (hasChanged('protocol_types')) tasks.push(update_protocol_types.run());
-            if (hasChanged('protocols')) tasks.push(update_protocols.run());
-            if (hasChanged('purposes')) tasks.push(update_purposes.run());
-            if (hasChanged('restrictions')) tasks.push(update_restrictions.run());
-            if (hasChanged('sm')) tasks.push(update_sm.run());
-            if (hasChanged('sn')) tasks.push(update_sn.run());
-            if (hasChanged('sn_types')) tasks.push(update_sn_types.run());
+      const hasChanged = (field) =>
+        !_.isEqual(
+          this.cleanValue(original[field]),
+          this.cleanValue(current[field])
+        );
 
-            // 3. Execution & UI Refresh
-            if (tasks.length > 0) {
-                await Promise.all(tasks);
-                showAlert(`Saved successfully! (${tasks.length} component(s) updated)`, 'success');
-            } else {
-                showAlert('No changes detected.', 'info');
-            }
+      const tasks = [];
 
-            closeModal('View_modal');
+      // 1. Main dataset fields
+      const mainFields = [
+        'title', 'description', 'data_capture', 'data_size',
+        'no_measurements', 'status_id', 'time_frame', 'spatial_frame', 'external'
+      ];
+      if (mainFields.some((field) => hasChanged(field))) {
+        tasks.push(update_dataset.run());
+      }
 
-            // Refresh the main table query
-            await GetView.run();
+      // 2. Authors (vključno z primary)
+      if (hasChanged('authors') || hasChanged('primary_author')) {
+        tasks.push(update_authors.run());
+      }
 
-        } catch (error) {
-            showAlert('Failed to save dataset: ' + (error.message || error), 'error');
-        }
+      if (hasChanged('collections')) tasks.push(update_collections.run());
+      if (hasChanged('file_formats')) tasks.push(update_file_formats.run());
+      if (hasChanged('data_formats')) tasks.push(update_formats.run());
+      if (hasChanged('instruments')) tasks.push(update_instruments.run());
+      if (hasChanged('partners')) tasks.push(update_partners.run());
+      if (hasChanged('protocol_types')) tasks.push(update_protocol_types.run());
+      if (hasChanged('protocols')) tasks.push(update_protocols.run());
+      if (hasChanged('purposes')) tasks.push(update_purposes.run());
+      if (hasChanged('restrictions')) tasks.push(update_restrictions.run());
+      if (hasChanged('sm')) tasks.push(update_sm.run());
+      if (hasChanged('sn')) tasks.push(update_sn.run());
+      if (hasChanged('sn_types')) tasks.push(update_sn_types.run());
+
+      if (tasks.length > 0) {
+        await Promise.all(tasks);
+        showAlert(`Saved successfully! (${tasks.length} component(s) updated)`, 'success');
+      } else {
+        showAlert('No changes detected.', 'info');
+      }
+
+      closeModal('View_modal');
+      await GetView.run();
+    } catch (error) {
+      showAlert('Failed to save dataset: ' + (error.message || error), 'error');
     }
+  }
 }

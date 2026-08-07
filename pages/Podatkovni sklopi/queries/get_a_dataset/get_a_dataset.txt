@@ -1,0 +1,3 @@
+SELECT * FROM metadata.datasets
+where id = {{ Tabela_sklopov.selectedRow.id }}
+--LIMIT 10;

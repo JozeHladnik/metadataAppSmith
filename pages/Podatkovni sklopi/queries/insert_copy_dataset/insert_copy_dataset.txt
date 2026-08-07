@@ -1,0 +1,26 @@
+INSERT INTO metadata.datasets
+(legacy_ref, title, 
+ description, data_capture, 
+ data_size, no_measurements,
+ status_id, time_frame, 
+ spatial_frame, "external", 
+ created_at, updated_at, 
+ created_by, updated_by)
+VALUES
+(
+  {{ get_a_dataset.data[0].legacy_ref }},
+  ' (copy of)' || {{ get_a_dataset.data[0].title }},   -- or any new title you want
+  {{ get_a_dataset.data[0].description }},
+  {{ get_a_dataset.data[0].data_capture }},
+  {{ get_a_dataset.data[0].data_size }},
+  {{ get_a_dataset.data[0].no_measurements }},
+  {{ get_a_dataset.data[0].status_id }},
+  {{ get_a_dataset.data[0].time_frame }},
+  {{ get_a_dataset.data[0].spatial_frame }},
+  {{ get_a_dataset.data[0].external }},
+  now(),                    -- new created_at
+  now(),                    -- new updated_at
+  'AppShmit',               -- or {{ current_user.email }} / whatever you use
+  null                      -- or '' 
+)
+RETURNING id;

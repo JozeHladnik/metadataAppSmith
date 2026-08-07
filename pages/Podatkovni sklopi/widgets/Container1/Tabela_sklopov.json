@@ -4,7 +4,7 @@
   "borderColor": "#E0DEDE",
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
   "borderWidth": "1",
-  "bottomRow": 78,
+  "bottomRow": 75,
   "boxShadow": "{{appsmith.theme.boxShadow.appBoxShadow}}",
   "cachedTableData": {},
   "canFreezeColumn": true,
@@ -80,13 +80,15 @@
     "protocol_types_data",
     "status_id",
     "collections_data",
-    "partners_data"
+    "partners_data",
+    "customColumn2"
   ],
-  "columnUpdatedAt": 1785308857237,
+  "columnUpdatedAt": 1785530452009,
   "columnWidthMap": {
     "authors": 293,
     "collections": 399,
     "customColumn1": 60,
+    "customColumn2": 74,
     "id": 60,
     "title": 375
   },
@@ -263,6 +265,15 @@
     },
     {
       "key": "tableData"
+    },
+    {
+      "key": "primaryColumns.customColumn2.boxShadow"
+    },
+    {
+      "key": "primaryColumns.customColumn2.borderRadius"
+    },
+    {
+      "key": "primaryColumns.customColumn2.buttonColor"
     }
   ],
   "dynamicPropertyPathList": [
@@ -271,11 +282,17 @@
     },
     {
       "key": "primaryColumns.customColumn1.onClick"
+    },
+    {
+      "key": "primaryColumns.customColumn2.onClick"
     }
   ],
   "dynamicTriggerPathList": [
     {
       "key": "primaryColumns.customColumn1.onClick"
+    },
+    {
+      "key": "primaryColumns.customColumn2.onClick"
     }
   ],
   "enableClientSideSearch": true,
@@ -509,6 +526,45 @@
       "onClick": "{{FormHelper.openViewModal();}}",
       "originalId": "customColumn1",
       "sticky": "left",
+      "textSize": "0.875rem",
+      "thousandSeparator": true,
+      "validation": {},
+      "verticalAlignment": "CENTER",
+      "width": 150
+    },
+    "customColumn2": {
+      "alias": "Copy",
+      "allowCellWrapping": false,
+      "allowSameOptionsInNewRow": true,
+      "borderRadius": "{{Tabela_sklopov.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.borderRadius.appBorderRadius)))}}",
+      "boxShadow": "{{Tabela_sklopov.processedTableData.map((currentRow, currentIndex) => ( \"none\"))}}",
+      "buttonColor": "{{Tabela_sklopov.processedTableData.map((currentRow, currentIndex) => ( (appsmith.theme.colors.primaryColor)))}}",
+      "buttonStyle": "rgb(3, 179, 101)",
+      "columnType": "iconButton",
+      "computedValue": "",
+      "currencyCode": "USD",
+      "customAlias": "",
+      "decimals": 0,
+      "enableFilter": true,
+      "enableSort": true,
+      "horizontalAlignment": "LEFT",
+      "iconName": "duplicate",
+      "id": "customColumn2",
+      "index": 10,
+      "isCellEditable": false,
+      "isCellVisible": true,
+      "isDerived": true,
+      "isDisabled": false,
+      "isDiscardVisible": true,
+      "isEditable": false,
+      "isSaveVisible": true,
+      "isVisible": true,
+      "label": "Copy",
+      "labelColor": "#FFFFFF",
+      "notation": "standard",
+      "onClick": "{{insert_copy_dataset.run().then(() => {\n    GetView.run(); // or Tabela_sklopov's actual refresh query\n  });\n}}",
+      "originalId": "customColumn2",
+      "sticky": "",
       "textSize": "0.875rem",
       "thousandSeparator": true,
       "validation": {},
@@ -1984,7 +2040,7 @@
   "searchKey": "",
   "tableData": "{{ GetView.data}}",
   "textSize": "0.875rem",
-  "topRow": 19,
+  "topRow": 16,
   "totalRecordsCount": 0,
   "type": "TABLE_WIDGET_V2",
   "version": 2,

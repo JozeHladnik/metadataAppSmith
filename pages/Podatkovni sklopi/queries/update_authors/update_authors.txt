@@ -8,7 +8,17 @@ SELECT
     nextval('metadata.dataset_author_id_seq'::regclass),
     {{ Tabela_sklopov.triggeredRow.id }},
     al.author_id,
-    (al.author_id = {{ JSONForm1.formData.primary_author || 'NULL' }}),
+		---Še bolje: fallback na prvega avtorja
+    al.author_id = COALESCE(
+      {{ JSONForm1.formData.primary_author != null && JSONForm1.formData.primary_author !== '' ? Number(JSONForm1.formData.primary_author) : null }},
+      (
+        SELECT value::integer
+        FROM json_array_elements_text(
+          '{{ JSON.stringify(JSONForm1.formData.authors || []) }}'::json
+        )
+        LIMIT 1
+      )
+    ),
     al.sort_order
 FROM (
     SELECT 
