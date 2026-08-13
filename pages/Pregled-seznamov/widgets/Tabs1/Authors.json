@@ -48,7 +48,10 @@
     "EditActions1"
   ],
   "columnUpdatedAt": 1784720332355,
-  "columnWidthMap": {},
+  "columnWidthMap": {
+    "id": 60,
+    "sort_order": 132
+  },
   "customIsLoading": false,
   "customIsLoadingValue": "",
   "defaultPageSize": 0,

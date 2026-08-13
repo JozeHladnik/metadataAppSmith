@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n    id AS value, \n    label AS label \nFROM metadata.authors \nORDER BY label ASC; ",
+      "body": "SELECT \n    id AS value, \n    label||case when active = true then '' else '-NA' end as label \nFROM metadata.authors \nORDER BY label ASC; ",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
