@@ -1,6 +1,6 @@
 {
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 11,
+  "bottomRow": 9,
   "boxShadow": "none",
   "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
   "buttonVariant": "PRIMARY",
@@ -33,8 +33,8 @@
   "parentId": "59rw5mx0bq",
   "parentRowSpace": 10,
   "rightColumn": 61,
-  "tooltip": "Crate new dataset record",
-  "topRow": 7,
+  "tooltip": "Ustvari novo vrstico ('Nov niz')",
+  "topRow": 5,
   "type": "ICON_BUTTON_WIDGET",
   "version": 1,
   "widgetId": "nh3cu4lb1g",

@@ -1,11 +1,11 @@
 -- Step 1: Delete old partner links
 DELETE FROM metadata.dataset_partners
-WHERE dataset_id = {{ JSONForm1.formData.id || Tabela_sklopov.triggeredRow.id || Table1.selectedRow.id }};
+WHERE dataset_id = {{ JSONForm1.formData.id || appsmith.store.viewData.id || Tabela_sklopov.triggeredRow.id || Tabela_sklopov.selectedRow.id }};
 
 -- Step 2: Insert current selection (with order)
 INSERT INTO metadata.dataset_partners (dataset_id, partner_id, sort_order)
 SELECT
-  CAST({{ JSONForm1.formData.id || Tabela_sklopov.triggeredRow.id || Table1.selectedRow.id }} AS INTEGER),
+  CAST({{ JSONForm1.formData.id || appsmith.store.viewData.id || Tabela_sklopov.triggeredRow.id || Tabela_sklopov.selectedRow.id }} AS INTEGER),
   CAST(value AS INTEGER),
   --'' AS note,  -- default empty note (change if you have per-partner notes)
   ordinality

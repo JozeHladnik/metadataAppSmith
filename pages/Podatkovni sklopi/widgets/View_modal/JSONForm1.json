@@ -857,7 +857,7 @@
           "isVisible": true,
           "label": "Purposes",
           "labelTextSize": "0.875rem",
-          "options": "{{get_puposes.data}}",
+          "options": "{{get_purposes.data}}",
           "originalIdentifier": "purposes",
           "position": 23,
           "serverSideFiltering": false,

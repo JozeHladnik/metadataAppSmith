@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "-- Step 1: Delete old sn links\nDELETE FROM metadata.dataset_sn\nWHERE dataset_id = {{ JSONForm1.formData.id || Tabela_sklopov.triggeredRow.id || Table1.selectedRow.id }};\n\n-- Step 2: Insert current selection (with order)\nINSERT INTO metadata.dataset_sn (dataset_id, sn_id, sort_order)\nSELECT\n  CAST({{ JSONForm1.formData.id || Tabela_sklopov.triggeredRow.id || Table1.selectedRow.id }} AS INTEGER),\n  CAST(value AS INTEGER),\n  ordinality\nFROM jsonb_array_elements_text(\n  COALESCE(\n    NULLIF({{ JSON.stringify(\n      JSONForm1.formData.sn || \n      []\n    ) }}, ''),\n    '[]'\n  )::jsonb\n) WITH ORDINALITY AS t(value, ordinality);",
+      "body": "-- Step 1: Delete old sn links\nDELETE FROM metadata.dataset_sn\nWHERE dataset_id = {{ JSONForm1.formData.id || appsmith.store.viewData.id || Tabela_sklopov.triggeredRow.id || Tabela_sklopov.selectedRow.id }};\n\n-- Step 2: Insert current selection (with order)\nINSERT INTO metadata.dataset_sn (dataset_id, sn_id, sort_order)\nSELECT\n  CAST({{ JSONForm1.formData.id || appsmith.store.viewData.id || Tabela_sklopov.triggeredRow.id || Tabela_sklopov.selectedRow.id }} AS INTEGER),\n  CAST(value AS INTEGER),\n  ordinality\nFROM jsonb_array_elements_text(\n  COALESCE(\n    NULLIF({{ JSON.stringify(\n      JSONForm1.formData.sn || \n      []\n    ) }}, ''),\n    '[]'\n  )::jsonb\n) WITH ORDINALITY AS t(value, ordinality);",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

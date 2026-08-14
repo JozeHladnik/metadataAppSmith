@@ -1,6 +1,7 @@
 -- Step 1: Delete old authors
 DELETE FROM metadata.dataset_author
-WHERE dataset_id = {{ Tabela_sklopov.triggeredRow.id }};
+WHERE dataset_id ={{ JSONForm1.formData.id || appsmith.store.viewData.id || Tabela_sklopov.triggeredRow.id || Tabela_sklopov.selectedRow.id }};
+--prej bila samo!: Tabela_sklopov.triggeredRow.id
 
 -- Step 2: Insert updated authors
 INSERT INTO metadata.dataset_author (id, dataset_id, author_id, is_primary, sort_order)

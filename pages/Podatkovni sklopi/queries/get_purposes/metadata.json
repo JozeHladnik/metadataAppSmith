@@ -1,6 +1,6 @@
 {
   "gitSyncId": "6a573e3c01c8a6d55f5d1671_f5478fcf-42fc-4b54-91db-31d7d924594a",
-  "id": "Podatkovni sklopi_get_puposes",
+  "id": "Podatkovni sklopi_get_purposes",
   "pluginId": "postgres-plugin",
   "pluginType": "DB",
   "unpublishedAction": {
@@ -23,7 +23,7 @@
       "pluginId": "postgres-plugin"
     },
     "dynamicBindingPathList": [],
-    "name": "get_puposes",
+    "name": "get_purposes",
     "pageId": "Podatkovni sklopi",
     "runBehaviour": "ON_PAGE_LOAD",
     "userSetOnLoad": true

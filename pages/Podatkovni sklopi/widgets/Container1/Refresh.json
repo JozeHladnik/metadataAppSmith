@@ -1,0 +1,58 @@
+{
+  "animateLoading": true,
+  "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
+  "bottomRow": 13,
+  "boxShadow": "none",
+  "buttonColor": "{{appsmith.theme.colors.primaryColor}}",
+  "buttonVariant": "SECONDARY",
+  "disabledWhenInvalid": false,
+  "dynamicBindingPathList": [
+    {
+      "key": "buttonColor"
+    },
+    {
+      "key": "borderRadius"
+    }
+  ],
+  "dynamicPropertyPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "dynamicTriggerPathList": [
+    {
+      "key": "onClick"
+    }
+  ],
+  "iconAlign": "left",
+  "iconName": "refresh",
+  "isDefaultClickDisabled": true,
+  "isDisabled": false,
+  "isLoading": false,
+  "isVisible": true,
+  "key": "irh3hz1284",
+  "leftColumn": 59,
+  "minWidth": 120,
+  "mobileBottomRow": 5,
+  "mobileLeftColumn": 43,
+  "mobileRightColumn": 59,
+  "mobileTopRow": 1,
+  "needsErrorInfo": false,
+  "onClick": "{{\n(async () => {\n  try {\n    await Promise.all([\n      GetView.run(),\n      get_a_dataset.run(),\n      get_authors.run(),\n      get_collections.run(),\n      get_dataset_by_id.run(),\n      get_datasets.run(),\n      get_file_formats.run(),\n      get_formats.run(),\n      get_instruments.run(),\n      get_loc_list.run(),\n      get_loc_stage.run(),\n      get_locations.run(),\n      get_partners.run(),\n      get_protocol_types.run(),\n      get_protocols.run(),\n      get_purposes.run(),          // (če je tipkarska napaka, popravi v get_purposes)\n      get_restrictions.run(),\n      get_sm.run(),\n      get_sn.run(),\n      get_sn_type.run(),\n      get_stage_list.run(),\n      get_statuses.run()\n    ]);\n\n    showAlert(\"All related queries refreshed\", \"success\");\n  } catch (error) {\n    showAlert(\"Refresh failed: \" + (error.message || error), \"error\");\n    console.error(error);\n  }\n})()\n}}",
+  "parentColumnSpace": 21.982421875,
+  "parentId": "59rw5mx0bq",
+  "parentRowSpace": 10,
+  "placement": "CENTER",
+  "recaptchaType": "V3",
+  "renderMode": "CANVAS",
+  "resetFormOnClick": false,
+  "responsiveBehavior": "hug",
+  "rightColumn": 61,
+  "text": "",
+  "tooltip": "Osveži povezave z bazo",
+  "topRow": 9,
+  "type": "BUTTON_WIDGET",
+  "version": 1,
+  "widgetId": "a7fkg1yoxy",
+  "widgetName": "Refresh"
+}

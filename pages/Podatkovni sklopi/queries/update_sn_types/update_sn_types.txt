@@ -1,11 +1,11 @@
 -- Step 1: Delete old sn_types links
 DELETE FROM metadata.dataset_sn_types
-WHERE dataset_id = {{ JSONForm1.formData.id || Tabela_sklopov.triggeredRow.id || Table1.selectedRow.id }};
+WHERE dataset_id = {{ JSONForm1.formData.id || appsmith.store.viewData.id || Tabela_sklopov.triggeredRow.id || Tabela_sklopov.selectedRow.id }};
 
 -- Step 2: Insert current selection (with order)
 INSERT INTO metadata.dataset_sn_types (dataset_id, sn_type_id, sort_order)
 SELECT
-  CAST({{ JSONForm1.formData.id || Tabela_sklopov.triggeredRow.id || Table1.selectedRow.id }} AS INTEGER),
+  CAST({{ JSONForm1.formData.id || appsmith.store.viewData.id || Tabela_sklopov.triggeredRow.id || Tabela_sklopov.selectedRow.id }} AS INTEGER),
   CAST(value AS INTEGER),
   ordinality
 FROM jsonb_array_elements_text(
