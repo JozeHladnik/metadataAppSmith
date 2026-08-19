@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO metadata.datasets\n(legacy_ref, title, \n description, data_capture, \n data_size, no_measurements,\n status_id, time_frame, \n spatial_frame, \"external\", \n created_at, updated_at, \n created_by, updated_by)\nVALUES\n(\n  '',\n  'Nov niz',\n  'Podatki od ...'::text,\n  'Opiši način zajema podatkov.'::text,\n  'MB/GB/TB'::text,\n  'Number of measurements.'::text,\n  1,\n  '',\n  'On the ZAG.'::text,\n  'Partnerji'::text,\n  now(),\n  now(),\n  'AppShmit',\n  ''\n)\nRETURNING id;",
+      "body": "INSERT INTO metadata.datasets\n(legacy_ref, title, \n description, data_capture, \n data_size, no_measurements,\n status_id, time_frame, \n spatial_frame, \"external\", \n created_at, updated_at, \n created_by, updated_by)\nVALUES\n(\n  '',\n  'Nov niz, (copy)',\n  'Podatki od ...'::text,\n  'Opiši način zajema podatkov.'::text,\n  'MB/GB/TB'::text,\n  'Number of measurements.'::text,\n  1,\n  '',\n  'On the ZAG.'::text,\n  'Partnerji'::text,\n  now(),\n  now(),\n  'AppShmit',\n  ''\n)\nRETURNING id;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

@@ -9,7 +9,7 @@ INSERT INTO metadata.datasets
 VALUES
 (
   '',
-  'Nov niz',
+  'Nov niz, (copy)',
   'Podatki od ...'::text,
   'Opiši način zajema podatkov.'::text,
   'MB/GB/TB'::text,
