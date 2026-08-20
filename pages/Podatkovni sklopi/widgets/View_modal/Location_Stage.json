@@ -40,7 +40,7 @@
   "columnUpdatedAt": 1785135027541,
   "columnWidthMap": {
     "id": 60,
-    "location": 214
+    "location": 143
   },
   "customIsLoading": false,
   "customIsLoadingValue": "",
@@ -258,7 +258,7 @@
   },
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 38,
+  "rightColumn": 41,
   "searchKey": "",
   "tableData": "{{get_loc_stage.data}}",
   "textSize": "0.875rem",

@@ -694,7 +694,7 @@
           "identifier": "instruments",
           "isCustomField": false,
           "isDisabled": false,
-          "isFilterable": false,
+          "isFilterable": true,
           "isRequired": false,
           "isVisible": true,
           "label": "Instruments",

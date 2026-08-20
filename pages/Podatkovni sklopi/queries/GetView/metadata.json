@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT * FROM metadata.vw_datasets_overview\nWHERE\n(\n    {{ !filter_sm.selectedOptionValues || filter_sm.selectedOptionValues.length === 0 }}\n    OR sm ILIKE ANY ( {{ filter_sm.selectedOptionValues.map(val => '%' + val + '%') }} )\n)\nAND\n(\n    {{ !filter_author.selectedOptionValues || filter_author.selectedOptionValues.length === 0 }}\n    OR authors ILIKE ANY( {{ filter_author.selectedOptionValues.map(val => '%' + val + '%') }} )\n);",
+      "body": "SELECT * FROM metadata.vw_datasets_overview\nWHERE\n(    {{ !filter_sm.selectedOptionValues || filter_sm.selectedOptionValues.length === 0 }}\n    OR sm ILIKE ANY ( {{ filter_sm.selectedOptionValues.map(val => '%' + val + '%') }} )\n)\nAND\n(    {{ !filter_author.selectedOptionValues || filter_author.selectedOptionValues.length === 0 }}\n    OR authors ILIKE ANY( {{ filter_author.selectedOptionValues.map(val => '%' + val + '%') }} )\n)\nAND\n(    {{ !filter_status.selectedOptionValues || filter_status.selectedOptionValues.length === 0 }}\n    OR status_label ILIKE ANY( {{ filter_status.selectedOptionValues.map(val => '%' + val + '%') }} )\n)\n",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [
