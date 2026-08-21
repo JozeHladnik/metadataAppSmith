@@ -11,3 +11,14 @@ AND
 (    {{ !filter_status.selectedOptionValues || filter_status.selectedOptionValues.length === 0 }}
     OR status_label ILIKE ANY( {{ filter_status.selectedOptionValues.map(val => '%' + val + '%') }} )
 )
+AND
+(    {{ !filter_location.selectedOptionValues || filter_location.selectedOptionValues.length === 0 }}
+    OR locations_stages ILIKE ANY( {{ filter_location.selectedOptionValues.map(val => '%' + val + '%') }} )
+)
+AND
+(    {{ !filter_purpose.selectedOptionValues || filter_purpose.selectedOptionValues.length === 0 }}
+    OR purposes ILIKE ANY( {{ filter_purpose.selectedOptionValues.map(val => '%' + val + '%') }} )
+)
+AND 
+(    {{ !filter_sn_type.selectedOptionValues || filter_sn_type.selectedOptionValues.length  === 0 }}
+    OR sn_types ILIKE ANY( {{ filter_sn_type.selectedOptionValues.map(val => '%' + val + '%') }} ))

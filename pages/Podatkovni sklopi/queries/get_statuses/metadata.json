@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "SELECT \n    id AS value, \n    label AS label \nFROM metadata.status\nORDER BY label ASC;",
+      "body": "SELECT \n    id AS value, \n    label AS label, \n\t\tCONCAT_WS(' - ', id, label) AS label_o\nFROM metadata.status\nORDER BY label ASC;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

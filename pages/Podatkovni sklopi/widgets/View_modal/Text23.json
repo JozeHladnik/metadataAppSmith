@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 236,
+  "bottomRow": 243,
   "dynamicBindingPathList": [
     {
       "key": "truncateButtonColor"
@@ -33,7 +33,7 @@
   "mobileRightColumn": 41,
   "mobileTopRow": 241,
   "needsErrorInfo": false,
-  "originalBottomRow": 233,
+  "originalBottomRow": 236,
   "originalTopRow": 229,
   "overflow": "NONE",
   "parentColumnSpace": 6.9375,
@@ -46,7 +46,7 @@
   "text": "{{\n  (() => {\n    const excludeFields = ['locations_stages', 'legacy_ref', 'created_at'];\n    const original = _.omit(appsmith.store.viewData, excludeFields);\n    const current = _.omit(JSONForm1.formData, excludeFields);\n    \n    // Fallback: if a field is missing from formData, treat it as unchanged (use original value)\n    const fieldsNotInForm = ['external', 'status_code'];\n    fieldsNotInForm.forEach(key => {\n      if (current[key] === undefined) {\n        current[key] = original[key];\n      }\n    });\n    \n    const allKeys = _.union(_.keys(original), _.keys(current));\n    \n    const diffs = allKeys\n      .filter(key => !_.isEqual(original[key], current[key]))\n      .map(key => \n        `${key}:\\n  before: ${JSON.stringify(original[key])}\\n  after:  ${JSON.stringify(current[key])}`\n      );\n    \n    return diffs.length > 0 \n      ? diffs.join('\\n\\n') \n      : \"No changes detected\";\n  })()\n}}",
   "textAlign": "LEFT",
   "textColor": "#231F20",
-  "topRow": 229,
+  "topRow": 230,
   "truncateButtonColor": "{{appsmith.theme.colors.primaryColor}}",
   "type": "TEXT_WIDGET",
   "version": 1,
