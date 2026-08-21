@@ -5,7 +5,7 @@
   "pluginType": "DB",
   "unpublishedAction": {
     "actionConfiguration": {
-      "body": "INSERT INTO metadata.datasets\n(title, \n description, \n data_capture, \n data_size, \n no_measurements,\n status_id,\n time_frame, \n spatial_frame,\n \"external\", \n created_at, updated_at, \n created_by, updated_by)\nVALUES\n(' (copy_of_)' || COALESCE({{ Tabela_sklopov.triggeredRow.title }}, 'Neznan naslov'),\n  {{ get_a_dataset.data[0].description }},\n  {{ get_a_dataset.data[0].data_capture }},\n  {{ get_a_dataset.data[0].data_size }},\n  {{ get_a_dataset.data[0].no_measurements }},\n  1,\n  {{ get_a_dataset.data[0].time_frame }},\n  {{ get_a_dataset.data[0].spatial_frame }},\n  {{ get_a_dataset.data[0].external }},\n  now(),                    -- new created_at\n  now(),                    -- new updated_at\n  'AppShmit',               -- or {{ current_user.email }} / whatever you use\n  'AppShmit'                    -- or '' \n)\nRETURNING id;\n",
+      "body": "INSERT INTO metadata.datasets (\n  title,\n  description,\n  data_capture,\n  data_size,\n  no_measurements,\n  status_id,\n  time_frame,\n  spatial_frame,\n  \"external\",\n  created_at,\n  updated_at,\n  created_by,\n  updated_by\n)\nSELECT\n  'copy_of.' || COALESCE(title, 'Neznan naslov'),\n  description,\n  data_capture,\n  data_size,\n  no_measurements,\n  1,              -- osnutek; če hočeš isti status: status_id\n  time_frame,\n  spatial_frame,\n  \"external\",\n  now(),\n  now(),\n  'AppSmith',\n  'AppSmith'\nFROM metadata.datasets\nWHERE id =  CAST({{ this.params.sourceId }} AS INTEGER) --  225--\nRETURNING id;",
       "encodeParamsToggle": true,
       "paginationType": "NONE",
       "pluginSpecifiedTemplates": [

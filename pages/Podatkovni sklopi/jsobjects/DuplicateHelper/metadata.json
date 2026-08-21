@@ -1,8 +1,8 @@
 {
   "gitSyncId": "6a573e3c01c8a6d55f5d1671_21cddfa5-6df4-4ca7-97b6-acc9d35864ec",
-  "id": "Podatkovni sklopi_xxxDuplicateHelper",
+  "id": "Podatkovni sklopi_DuplicateHelper",
   "unpublishedCollection": {
-    "name": "xxxDuplicateHelper",
+    "name": "DuplicateHelper",
     "pageId": "Podatkovni sklopi",
     "pluginId": "js-plugin",
     "pluginType": "JS",

@@ -1,0 +1,130 @@
+-- copy_dataset_junctions
+-- this.params.oldId  = izvorni dataset
+-- this.params.newId  = novi dataset (RETURNING iz insert_copy_dataset)
+
+INSERT INTO metadata.dataset_author (dataset_id, author_id, sort_order, is_primary)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  author_id,
+  COALESCE(sort_order, 0) + 1,
+  is_primary
+FROM metadata.dataset_author
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_formats (dataset_id, format_id, sort_order)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  format_id,
+  
+  COALESCE(sort_order, 0) + 1
+FROM metadata.dataset_formats
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_partners (dataset_id, partner_id, sort_order)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  partner_id,
+  
+  COALESCE(sort_order, 0) + 1
+FROM metadata.dataset_partners
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_collections (dataset_id, collection_id, sort_order)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  collection_id,
+  
+  COALESCE(sort_order, 0) + 1
+FROM metadata.dataset_collections
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_file_formats (dataset_id, file_format_id, sort_order)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  file_format_id,
+  
+  COALESCE(sort_order, 0) + 1
+FROM metadata.dataset_file_formats
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_locations_stage (dataset_id, location_id, stage_id,  sort_order)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  location_id,
+  stage_id,
+  COALESCE(sort_order, 0) + 1
+FROM metadata.dataset_locations_stage
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_instrument (dataset_id, instrument_id, sort_order)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  instrument_id,
+  
+  COALESCE(sort_order, 0) + 1
+FROM metadata.dataset_instrument
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_protocols (dataset_id, protocol_id, sort_order )
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  protocol_id,
+    COALESCE(sort_order, 0) + 1 
+FROM metadata.dataset_protocols
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_protocol_types (dataset_id, protocol_type_id, sort_order)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  protocol_type_id,
+  
+  COALESCE(sort_order, 0) + 1
+FROM metadata.dataset_protocol_types
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_sm (dataset_id, sm_id, is_primary, sort_order)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  sm_id,
+  is_primary,
+  COALESCE(sort_order, 0) + 1
+FROM metadata.dataset_sm
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_restrictions (dataset_id, restriction_id, sort_order)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  restriction_id,
+  
+  COALESCE(sort_order, 0) + 1
+FROM metadata.dataset_restrictions
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_purposes (dataset_id, purpose_id, sort_order)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  purpose_id,
+  
+  COALESCE(sort_order, 0) + 1
+FROM metadata.dataset_purposes
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_sn (dataset_id, sn_id, is_primary, sort_order)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  sn_id,
+  
+  is_primary,
+  COALESCE(sort_order, 0) + 1
+FROM metadata.dataset_sn
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);
+
+INSERT INTO metadata.dataset_sn_types (dataset_id, sn_type_id, is_primary, sort_order)
+SELECT
+  CAST({{ this.params.newId }} AS INTEGER),
+  sn_type_id,
+  
+  is_primary,
+  COALESCE(sort_order, 0) + 1
+FROM metadata.dataset_sn_types
+WHERE dataset_id = CAST({{ this.params.oldId }} AS INTEGER);

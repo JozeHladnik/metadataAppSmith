@@ -1,7 +1,7 @@
 {
   "animateLoading": true,
   "borderRadius": "{{appsmith.theme.borderRadius.appBorderRadius}}",
-  "bottomRow": 217,
+  "bottomRow": 248,
   "dynamicBindingPathList": [
     {
       "key": "text"
@@ -18,7 +18,7 @@
   "isLoading": false,
   "isVisible": true,
   "key": "0cbau5hsvi",
-  "leftColumn": 43,
+  "leftColumn": 41,
   "maxDynamicHeight": 9000,
   "minDynamicHeight": 4,
   "minWidth": 450,
@@ -35,7 +35,7 @@
   "parentRowSpace": 10,
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 61,
+  "rightColumn": 63,
   "shouldTruncate": false,
   "text": "{{\n(() => {\n  const multiselectFields = [\n    'sm', 'sn', 'sn_types', 'authors',\n    'partners', 'protocol_types', 'protocols',\n    'purposes', 'restrictions',\n    'collections', 'file_formats', 'data_formats', 'instruments'\n  ];\n  const excludeFields = ['locations_stages', 'legacy_ref', 'created_at'];\n\n  const normalizeValue = (val, key) => {\n    if (val === null || val === undefined) return '';\n    if (multiselectFields.includes(key) || Array.isArray(val)) {\n      return (val || []).map(String).sort();\n    }\n    if (typeof val === 'number' || typeof val === 'boolean') return String(val);\n    return val;\n  };\n\n  const normalize = (obj) => {\n    const cleaned = _.omit(obj || {}, excludeFields);\n    return _.mapValues(cleaned, (val, key) => normalizeValue(val, key));\n  };\n\n  const formData = JSONForm1.formData || {};\n  const formNormalized = normalize(formData);\n  const viewNormalized = normalize(appsmith.store.viewData);\n\n  // Če forma polja ne pošlje, to ni sprememba\n  ['status_code', 'primary_author', 'external'].forEach((key) => {\n    if (!(key in formData)) {\n      formNormalized[key] = viewNormalized[key] ?? '';\n    }\n  });\n\n  const allKeys = _.union(_.keys(formNormalized), _.keys(viewNormalized));\n  const diffs = allKeys\n    .filter((key) => !_.isEqual(formNormalized[key], viewNormalized[key]))\n    .map((key) => `- ${key}`);\n\n  return diffs.length\n    ? `Changed fields:\\n${diffs.join('\\n')}`\n    : 'No changes detected.';\n})()\n}}",
   "textAlign": "LEFT",

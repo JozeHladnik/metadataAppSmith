@@ -1,28 +1,32 @@
-INSERT INTO metadata.datasets
-(title, 
- description, 
- data_capture, 
- data_size, 
- no_measurements,
- status_id,
- time_frame, 
- spatial_frame,
- "external", 
- created_at, updated_at, 
- created_by, updated_by)
-VALUES
-(' (copy_of_)' || COALESCE({{ Tabela_sklopov.triggeredRow.title }}, 'Neznan naslov'),
-  {{ get_a_dataset.data[0].description }},
-  {{ get_a_dataset.data[0].data_capture }},
-  {{ get_a_dataset.data[0].data_size }},
-  {{ get_a_dataset.data[0].no_measurements }},
-  1,
-  {{ get_a_dataset.data[0].time_frame }},
-  {{ get_a_dataset.data[0].spatial_frame }},
-  {{ get_a_dataset.data[0].external }},
-  now(),                    -- new created_at
-  now(),                    -- new updated_at
-  'AppShmit',               -- or {{ current_user.email }} / whatever you use
-  'AppShmit'                    -- or '' 
+INSERT INTO metadata.datasets (
+  title,
+  description,
+  data_capture,
+  data_size,
+  no_measurements,
+  status_id,
+  time_frame,
+  spatial_frame,
+  "external",
+  created_at,
+  updated_at,
+  created_by,
+  updated_by
 )
+SELECT
+  'copy_of.' || COALESCE(title, 'Neznan naslov'),
+  description,
+  data_capture,
+  data_size,
+  no_measurements,
+  1,              -- osnutek; če hočeš isti status: status_id
+  time_frame,
+  spatial_frame,
+  "external",
+  now(),
+  now(),
+  'AppSmith',
+  'AppSmith'
+FROM metadata.datasets
+WHERE id =  CAST({{ this.params.sourceId }} AS INTEGER) --  225--
 RETURNING id;

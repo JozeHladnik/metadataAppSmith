@@ -65,7 +65,7 @@
   "placeholderText": "Select option(s)",
   "renderMode": "CANVAS",
   "responsiveBehavior": "fill",
-  "rightColumn": 47,
+  "rightColumn": 59,
   "serverSideFiltering": false,
   "sourceData": "{{get_authors.data}}",
   "topRow": 1,
